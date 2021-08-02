@@ -59,7 +59,7 @@ construir entonces dos clases para inyección de dependencias: `indexer.IndexerC
 
 ## Aspectos operativos ##
 
-- No modificar ningún archivo de código ya existente en el repositorio (excepto por `DefaultFileTokenizerFactory`).
+- No modificar ningún archivo de código ya existente en el repositorio.
 - No modificar ninguna prueba automatizada.
 - No modificar ningún chequeo de estilo. 
 - No utilizar spanglish.
