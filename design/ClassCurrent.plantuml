@@ -65,6 +65,8 @@ package fulltextsearch {
             }
 
             class DefaultFileTokenizerFactory {
+                - factories: Map<String, FileTokenizerFactory>
+                + DefaultFileTokenizerFactory(Map<String, FileTokenizerFactory>)
             }
 
             FileTokenizerFactory <|.. DefaultFileTokenizerFactory
@@ -93,7 +95,7 @@ package fulltextsearch {
 
             FileTokenizerFactory <|.. PdfFileTokenizerFactory
             FileTokenizerFactory <|.. TxtFileTokenizerFactory
-            FileTokenizerFactory o.. DefaultFileTokenizerFactory
+            FileTokenizerFactory o.. DefaultFileTokenizerFactory :factories
 
         }
 
@@ -110,11 +112,20 @@ package fulltextsearch {
             FileSource <|.. DirectoryFileSource
         }
 
-        DefaultIndexer ..> FileSource
-        DefaultIndexer ..> FileTokenizerFactory
+        DefaultIndexer --> FileSource
+        DefaultIndexer --> FileTokenizerFactory
         DefaultIndexer ..> FileTokenizer
-        DefaultIndexer ..> PersistentIndex
+        DefaultIndexer --> PersistentIndex
 
+        class IndexerComponentFactory {
+            + indexer(directory: File, :FileSource,:FileTokenizerFactory,:PersistentIndex): Indexer
+            - fileSource(directory: File)
+            - fileTokenizerFactory(:Map<String, FileTokenizerFactory>)
+            - persistentIndex(): PersistentIndex
+            - trie(): Trie
+        }
+
+        IndexerCmd ..> IndexerComponentFactory
     }
 
     package searcher {
@@ -138,6 +149,14 @@ package fulltextsearch {
         Searcher <.. SearcherCmd
         PersistentIndex <.. DefaultSearcher
         IndexLocation <.. SearcherCmd
+
+        class SearcherComponentFactory {
+            + searcher(:PersistentIndex): Searcher
+            - persistentIndex(): PersistentIndex
+            - trie(): Trie
+        }
+
+        SearcherCmd ..> SearcherComponentFactory
     }
 
     package trie {
