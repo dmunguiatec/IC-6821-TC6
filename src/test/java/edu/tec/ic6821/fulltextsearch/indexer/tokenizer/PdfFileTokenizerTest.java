@@ -15,7 +15,7 @@ public class PdfFileTokenizerTest {
     @Test
     public void testConstructor() throws URISyntaxException {
         // given
-        final File pdfFile = new File(getClass().getResource("/LoremIpsum.pdf").toURI());
+        final File pdfFile = new File(getClass().getResource("/toindex/LoremIpsum.pdf").toURI());
 
         // when
         final PdfFileTokenizer tokenizer = new PdfFileTokenizer(pdfFile);
@@ -36,7 +36,7 @@ public class PdfFileTokenizerTest {
     @Test
     public void hasNext() throws URISyntaxException {
         // given
-        final File pdfFile = new File(getClass().getResource("/LoremIpsum.pdf").toURI());
+        final File pdfFile = new File(getClass().getResource("/toindex/LoremIpsum.pdf").toURI());
         final PdfFileTokenizer tokenizer = new PdfFileTokenizer(pdfFile);
 
         // when
@@ -58,7 +58,7 @@ public class PdfFileTokenizerTest {
     @Test
     public void next() throws URISyntaxException {
         // given
-        final File pdfFile = new File(getClass().getResource("/LoremIpsum.pdf").toURI());
+        final File pdfFile = new File(getClass().getResource("/toindex/LoremIpsum.pdf").toURI());
         final PdfFileTokenizer tokenizer = new PdfFileTokenizer(pdfFile);
 
         // when

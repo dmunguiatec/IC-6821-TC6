@@ -15,7 +15,7 @@ public class TxtFileTokenizerTest {
     @Test
     public void testConstructor() throws URISyntaxException {
         // given
-        final File txtFile = new File(getClass().getResource("/LoremIpsum.txt").toURI());
+        final File txtFile = new File(getClass().getResource("/toindex/LoremIpsum.txt").toURI());
 
         // when
         final TxtFileTokenizer tokenizer = new TxtFileTokenizer(txtFile);
@@ -36,7 +36,7 @@ public class TxtFileTokenizerTest {
     @Test
     public void hasNext() throws URISyntaxException {
         // given
-        final File txtFile = new File(getClass().getResource("/LoremIpsum.txt").toURI());
+        final File txtFile = new File(getClass().getResource("/toindex/LoremIpsum.txt").toURI());
         final TxtFileTokenizer tokenizer = new TxtFileTokenizer(txtFile);
 
         // when
@@ -58,7 +58,7 @@ public class TxtFileTokenizerTest {
     @Test
     public void next() throws URISyntaxException {
         // given
-        final File txtFile = new File(getClass().getResource("/LoremIpsum.txt").toURI());
+        final File txtFile = new File(getClass().getResource("/toindex/LoremIpsum.txt").toURI());
         final TxtFileTokenizer tokenizer = new TxtFileTokenizer(txtFile);
 
         // when
